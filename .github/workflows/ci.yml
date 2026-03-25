@@ -1,24 +1,23 @@
 name: CI Pipeline
 
-on:
+on: #Every time you push code to main, the pipeline starts automatically.
   push:
     branches: [ "main" ]
 
 jobs:
   build-and-scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #Creates a virtual machine (Linux) to run your pipeline.
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4 #Downloads your repo into the runner.
 
     - name: Build Docker image
-      run: docker build -t todo-backend:latest ./backend
+      run: docker build -t todo-backend:latest ./backend #Builds your backend into a Docker image.
 
     - name: Scan with Trivy
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: 'todo-backend:latest'
         format: 'table'
-        exit-code: '0'
         severity: 'CRITICAL,HIGH'
