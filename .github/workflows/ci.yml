@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 
-on: #Every time you push code to main, the pipeline starts automatically.
+on: #Every time you push code to main, the pipeline starts automatically. #!trigger
   push:
     branches: [ "main" ]
 env:
@@ -45,9 +45,9 @@ jobs:
     # 🐳 login to ECR
     - name: Login to ECR
       run: |
-        $password = aws ecr get-login-password --region us-east-1
-        docker login --username AWS --password $password $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$AWS_REGION.amazonaws.com
-
+        aws ecr get-login-password --region $AWS_REGION | \
+        docker login --username AWS --password-stdin \
+        $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$AWS_REGION.amazonaws.com
     # 🏷️ tag image
     - name: Tag image
       run: |
