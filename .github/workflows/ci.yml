@@ -67,7 +67,3 @@ jobs:
           --cluster $ECS_CLUSTER \
           --service $ECS_SERVICE \
           --force-new-deployment
-
-#AKIAXYKJUF3NRNTQ7IAH
-
-#goU/Ns8TBemtyPICMMz+hIlXdjfU+auCUEiiMEbi
