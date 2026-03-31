@@ -48,4 +48,3 @@ jobs:
             --cluster ${{ vars.ECS_CLUSTER }} \
             --service ${{ vars.ECS_SERVICE }} \
             --force-new-deployment
-#AKIA47CRZAJUN7FB6O5Z 3HBOKCN/euMm+Bbus/BalzSVApfnPu/n25OCl0Vp
